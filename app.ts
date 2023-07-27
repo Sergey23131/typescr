@@ -13,6 +13,7 @@ const user1: IUser<number[]> = {name: 'Ihor', age: 5, data: [2, 4, 1]};
 const user2: IUser<string> = {name: 'Ihor', age: 5, data: 'some info'};
 
 const user3: Partial<IUser<string>> = {name: 'Ihor'};*/
+
 /*
 class User {
     /!*
@@ -35,6 +36,7 @@ class User {
 const user = new User(1, 'MAx', 13)
 
 console.log(user.getName())*/
+/*
 
 interface iShapeActions {
     area: () => number
@@ -43,7 +45,7 @@ interface iShapeActions {
 
 class Rectangle implements iShapeActions {
     constructor(private a: number, private b: number) {
-        /*/this прописывается автоматически /*/
+        /!*!/this прописывается автоматически /!*!/
     }
 
     area(): number {
@@ -58,7 +60,7 @@ class Rectangle implements iShapeActions {
 
 class Triangle implements iShapeActions {
     constructor(private a: number, private b: number, private c: number) {
-        /*/this прописывается автоматически /*/
+        /!*!/this прописывается автоматически /!*!/
     }
 
 
@@ -82,3 +84,25 @@ for (let shape of shapes) {
     console.log(shape.area())
     console.log(shape.perimeter())
 }
+
+type MyNumber = number | string
+
+const diffNumber: MyNumber = '9';
+
+const asd = () => {
+    return 19
+}
+
+type MyFuncType = ReturnType<typeof asd>
+
+const g: MyFuncType = 3; //проверка что возвращается число с функции
+*/
+import {userService} from "./services/user.service";
+
+userService.getAll().then(value => value.data)
+    .then(users => {
+        for (let user of users) {
+            console.log(user.email)
+        }
+
+    })
